@@ -3,21 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_Entities", "1_Entities", "{17445242-6C02-4256-8112-F044A6482545}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_DataAccess", "1_DataAccess", "{17445242-6C02-4256-8112-F044A6482545}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_Services", "3_Services", "{65C45607-87A5-4215-9497-8E49B6DB9E96}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_Services", "2_Services", "{65C45607-87A5-4215-9497-8E49B6DB9E96}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4_Presentation", "4_Presentation", "{27688894-366A-49D7-95BA-854ADC708E7A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_Presentation", "3_Presentation", "{27688894-366A-49D7-95BA-854ADC708E7A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0_Database", "0_Database", "{9903D40A-3F9E-4D75-8F87-899544DBC1BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "Entities\DataAccess.csproj", "{043D071D-C22A-4AC6-A80A-1CECB4C5713A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{043D071D-C22A-4AC6-A80A-1CECB4C5713A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{B97DCFCF-F804-4C08-BBE3-6D098B6A4AE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{B97DCFCF-F804-4C08-BBE3-6D098B6A4AE6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{8E9C4A3F-C343-4D4D-BB43-11BF7BEFBF6B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_Bussiness", "2_Bussiness", "{4BEC131B-2A0C-4912-A49F-6B3A427B60B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation\Presentation.csproj", "{8E9C4A3F-C343-4D4D-BB43-11BF7BEFBF6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
