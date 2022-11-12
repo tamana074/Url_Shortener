@@ -11,12 +11,12 @@ namespace Services.Services
     {
 
         private readonly ShortenerService _shortenerService;
-      //  private readonly MongoDBService<Urls> _mongoDb;
+        private readonly MongoDBService<Urls> _mongoDb;
 
-        public UrlServices(ShortenerService shortenerService /*, MongoDBService mongoDb */)
+        public UrlServices(ShortenerService shortenerService , MongoDBService<Urls> mongoDb )
         {
             _shortenerService = shortenerService;
-            //_mongoDb = mongoDb;
+            _mongoDb = mongoDb;
         }
 
         public async Task<ServiceResponseModel<Urls>> GenerateUrl(string longUrl)
@@ -35,7 +35,7 @@ namespace Services.Services
                 var url = _shortenerService.GenerateShortUrl(longUrl);
 
 
-                //await _mongoDb.CreateAsync(url);
+                await _mongoDb.CreateAsync(url);
                 response.Message = Resource.SuccessMessage;
                 response.StatusCode = HttpStatusCode.OK;
                 response.Data = url;
