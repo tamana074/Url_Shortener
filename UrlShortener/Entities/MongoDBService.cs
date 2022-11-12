@@ -1,13 +1,11 @@
-﻿using DataAccess.Entities;
+﻿using System.Linq.Expressions;
 using Entities;
 using Microsoft.Extensions.Options; 
 using MongoDB.Driver;
-using MongoDB.Bson;
-using MongoDB.Driver.Core;
 
 namespace DataAccess
 {
-    public class MongoDBService
+    public class MongoDBService<T>
     {
         private IMongoDatabase _MongoDatabase { get; set; }
         private IMongoClient _Client { get; set; }
@@ -24,15 +22,20 @@ namespace DataAccess
             return _MongoDatabase.GetCollection<T>(collectionName);
         }
 
-        private readonly IMongoCollection<Urls> _urlsCollection;
+        private readonly IMongoCollection<T> _urlsCollection;
 
 
-        public async Task<List<Urls>> GetAsync()
+        public async Task<List<T>> GetAsync()
         {
-            return GetCollection<Urls>(_CollectionName).AsQueryable().ToList();
+            return GetCollection<T>(_CollectionName).AsQueryable().ToList();
+        }
+        
+        public async Task<List<T>> GetAsync(Expression<Func<T, bool>> where)
+        {
+            return GetCollection<T>(_CollectionName).AsQueryable().Where(where).ToList();
         }
 
-        public async Task CreateAsync(Urls urls)
+        public async Task CreateAsync(T urls)
         {
             await _urlsCollection.InsertOneAsync(urls);
         }

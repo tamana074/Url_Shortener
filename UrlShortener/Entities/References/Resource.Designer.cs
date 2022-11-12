@@ -79,6 +79,15 @@ namespace DataAccess.References {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to موردی یافت نشد.
+        /// </summary>
+        public static string NotFound {
+            get {
+                return ResourceManager.GetString("NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to خطایی رخ داده است.
         /// </summary>
         public static string PublicError {

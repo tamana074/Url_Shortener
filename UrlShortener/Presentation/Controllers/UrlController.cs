@@ -15,24 +15,38 @@ namespace Presentation.Controllers
         }
 
 
-        //[HttpGet("{urlCode}")]
-        //public IActionResult Index(string urlCode)
-        //{
-        //    try
-        //    { 
-        //        if (string.IsNullOrEmpty(urlCode))
-        //        {
-        //            return BadRequest(Resource.BadRequestError);
-        //        }
+        [HttpGet("{urlCode}")]
+        public IActionResult Index(string urlCode)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(urlCode))
+                {
+                    return BadRequest(Resource.BadRequestError);
+                }
 
-        //        var response = _urlServices.GetUrlByUrlCode();
-        //        return Ok();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return Problem(Resource.PublicError);
-        //    }
-        //}
+                var response = _urlServices.GetUrlByUrlCode(urlCode);
+                switch (response.Result.StatusCode)
+                {
+
+                    case HttpStatusCode.OK:
+                        return Ok(response.Result.Message);
+
+                    case HttpStatusCode.BadRequest:
+                        return BadRequest(response.Result.Message);
+                   
+                    case HttpStatusCode.NotFound:
+                        return BadRequest(response.Result.Message);
+
+                    default:
+                        return Problem(response.Result.Message);
+                }
+            }
+            catch (Exception e)
+            {
+                return Problem(Resource.PublicError);
+            }
+        }
 
 
         [HttpPost("generate-short-url")]

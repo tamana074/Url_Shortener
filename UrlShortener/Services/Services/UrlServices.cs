@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
 using DataAccess;
 using DataAccess.Entities;
 using DataAccess.References;
@@ -15,12 +11,12 @@ namespace Services.Services
     {
 
         private readonly ShortenerService _shortenerService;
-       // private readonly MongoDBService _mongoDb;
+      //  private readonly MongoDBService<Urls> _mongoDb;
 
         public UrlServices(ShortenerService shortenerService /*, MongoDBService mongoDb */)
         {
             _shortenerService = shortenerService;
-           //_mongoDb = mongoDb;
+            //_mongoDb = mongoDb;
         }
 
         public async Task<ServiceResponseModel<Urls>> GenerateUrl(string longUrl)
@@ -52,6 +48,27 @@ namespace Services.Services
                 response.StatusCode = HttpStatusCode.InternalServerError;
                 return response;
             }
+        }
+
+
+        public async Task<ServiceResponseModel<Urls>> GetUrlByUrlCode(string code)
+        {
+            var response = new ServiceResponseModel<Urls>();
+           
+            var url = _mongoDb.GetAsync(x => x.ShortCode == code).Result.SingleOrDefault();
+           
+            if (url == null)
+            {
+                response.Message = Resource.NotFound;
+                response.StatusCode = HttpStatusCode.NotFound;
+                return response;
+            }
+
+            response.Message = Resource.SuccessMessage;
+            response.StatusCode = HttpStatusCode.OK;
+            response.Data = url;
+            return response;
+
         }
     }
 }

@@ -15,7 +15,6 @@ builder.Services.AddSwaggerGen(option =>
 });
 
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
-builder.Services.AddSingleton<MongoDBService>();
 builder.Services.AddTransient<ShortenerService>();
 
 builder.Services.AddTransient<IUrlServices, UrlServices>();
