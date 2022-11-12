@@ -43,6 +43,10 @@
 # Debug files
 *.editorconfig
 *.dtbchache.v2
+*.dtbcache.v2
+*.futdcache.v1
+*.props
+*.targets
 *.dSYM/
 *.su
 *.suo
