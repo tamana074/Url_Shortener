@@ -11,9 +11,9 @@ namespace Services.Services
     {
 
         private readonly ShortenerService _shortenerService;
-        private readonly MongoDBService<Urls> _mongoDb;
+        private readonly MongoDbServices<Urls> _mongoDb;
 
-        public UrlServices(ShortenerService shortenerService , MongoDBService<Urls> mongoDb )
+        public UrlServices(ShortenerService shortenerService , MongoDbServices<Urls> mongoDb )
         {
             _shortenerService = shortenerService;
             _mongoDb = mongoDb;
